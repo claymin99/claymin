@@ -66,12 +66,18 @@ const input = document.getElementById('numberInput');
 const countText = document.getElementById('countText');
 
 input.addEventListener('input', () => {
-  let val = input.value.replace(/\\D/g, '');
+  let val = input.value;
+
+  val = val.replace(/[^0-9]/g, '');
+
   if (val.length > 7) val = '';
+
   input.value = val;
   countText.textContent = `จำนวนเลขวิน ${val.length} เลข`;
+
   generate(val.split(''));
 });
+
 
 function generate(arr) {
   out1.value = win2(arr).join(' ');
